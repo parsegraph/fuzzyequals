@@ -1,4 +1,4 @@
-DIST_NAME = gettimeinmillis 
+DIST_NAME = fuzzyequals
 
 SCRIPT_FILES = \
 	src/index.ts

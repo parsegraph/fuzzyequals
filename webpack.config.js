@@ -4,9 +4,9 @@ module.exports = {
   entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "gettimeinmillis.js",
+    filename: "fuzzyequals.js",
     globalObject: "this",
-    library: "getTimeInMillis",
+    library: "fuzzyEquals",
     libraryTarget: "umd",
   },
   module: {
