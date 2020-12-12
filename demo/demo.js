@@ -1,16 +1,52 @@
+const glob = require("glob")
+
 const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+async function getDemos() {
+  return new Promise((respond, reject)=>{
+    glob("www/*.html", {}, function (err, files) {
+      if (err) {
+        reject(err);
+      }
+      // files is an array of filenames.
+      respond(files);
+    });
+  });
+}
+
+app.get('/', async (req, res) => {
+  resp = "";
+  const write = (text)=>{
+    resp += text + "\n";
+  };
+
+  write(`<!DOCTYPE html>`);
+  write(`<html>`);
+  write(`<head>`);
+  write(`<title>fuzzyequals</title>`);
+  write(`</head>`);
+  write(`<body>`);
+  write(`<h1>fuzzyequals <a href='/coverage'>Coverage</a> <a href='/docs'>Docs</a></h1>`);
+  write(`<p>This library is available as JavaScript UMD module: <a href='/fuzzyequals.js'>fuzzyequals.js</a></p>`);
+  write(`<h2>Samples &amp; Demos</h2>`);
+  write(`<ul>`);
+  (await getDemos()).forEach((demo)=>{
+    write(`<li><a href='/${demo}'>${demo}.html</li>`);
+  });
+  write(`</ul>`);
+  write(`</body>`);
+  write(`</html>`);
+
+  res.end(resp);
+})
 
 app.use(express.static("./src"));
 app.use(express.static("./dist"));
-app.use(express.static("./coverage"));
 app.use(express.static("./www"));
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`See fuzzyequals build information at http://localhost:${port}`);
 });
+
