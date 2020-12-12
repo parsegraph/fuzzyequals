@@ -21,7 +21,7 @@ export class Fuzziness {
   check(a, b) {
     const fuzziness = this.getFuzziness();
     if (!fuzziness) {
-      return (isNaN(a) && isNaN(b)) || a === b;
+      return a === b;
     }
     return Math.abs(Math.abs(a) - Math.abs(b)) < fuzziness;
   }

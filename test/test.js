@@ -66,4 +66,22 @@ describe("Fuzziness", function () {
     setFuzziness(0);
     assert.equal(fuzzyEquals(1, 1.000001), false);
   });
+  it("handles both NaN appropriately (fuzzy)", ()=>{
+    setFuzziness(.0001);
+    assert.equal(fuzzyEquals(NaN, NaN), false);
+  });
+  it("handles both NaN appropriately (exact)", ()=>{
+    setFuzziness(0);
+    assert.equal(fuzzyEquals(NaN, NaN), false);
+  });
+  it("handles NaN appropriately (exact)", ()=>{
+    setFuzziness(0);
+    assert.equal(fuzzyEquals(NaN, 1), false);
+    assert.equal(fuzzyEquals(1, NaN), false);
+  });
+  it("handles NaN appropriately (fuzzy)", ()=>{
+    setFuzziness(.0001);
+    assert.equal(fuzzyEquals(NaN, 1), false);
+    assert.equal(fuzzyEquals(1, NaN), false);
+  });
 });
