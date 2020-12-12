@@ -17,6 +17,12 @@ describe("fuzzyEquals", function () {
   it("treats close numbers as unequal without fuzziness", ()=>{
     assert.ok(fuzzyEquals(1, 1.0000001));
   });
+
+  it("treats negative numbers appropriately", ()=>{
+    assert.ok(!fuzzyEquals(-1, 0, 0.1));
+    assert.ok(!fuzzyEquals(-1, -0.5, 0.1));
+  });
+
   it("can be changed globally", ()=>{
     setFuzziness(1);
     assert.equal(getFuzziness(), 1);
