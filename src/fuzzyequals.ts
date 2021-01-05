@@ -1,15 +1,15 @@
 export class Fuzziness {
   _fuzziness:number;
 
-  constructor(value) {
+  constructor(value:number) {
     this.setFuzziness(value);
   }
 
-  setFuzziness(value) {
+  setFuzziness(value:number) {
     this._fuzziness = value;
   }
 
-  getFuzziness() {
+  getFuzziness():number {
     return this._fuzziness !== undefined ?
       this._fuzziness : defaultFuzziness.getFuzziness();
   }
@@ -18,7 +18,7 @@ export class Fuzziness {
     this.setFuzziness(undefined);
   }
 
-  check(a, b) {
+  check(a:number, b:number):boolean {
     const fuzziness = this.getFuzziness();
     if (!fuzziness) {
       return a === b;
@@ -28,7 +28,7 @@ export class Fuzziness {
 }
 
 const defaultFuzziness = new Fuzziness(1e-6);
-export function setFuzziness(value) {
+export function setFuzziness(value:number) {
   defaultFuzziness.setFuzziness(value);
 }
 
@@ -40,8 +40,7 @@ export function cloneFuzziness() {
   return new Fuzziness(defaultFuzziness.getFuzziness());
 }
 
-// eslint-disable-next-line require-jsdoc
-export default function fuzzyEquals(a, b, fuzziness) {
+export default function fuzzyEquals(a:number, b:number, fuzziness:number) {
   let calc = defaultFuzziness;
   if (fuzziness !== undefined) {
     calc = new Fuzziness(fuzziness);

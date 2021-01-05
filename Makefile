@@ -1,7 +1,7 @@
 DIST_NAME = fuzzyequals
 
 SCRIPT_FILES = \
-	src/index.ts
+	src/$(DIST_NAME).ts
 
 all: build lint test coverage esdoc
 

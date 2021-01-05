@@ -1,8 +1,9 @@
 {
   "name": "parsegraph-fuzzyequals",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Compares numbers within a set tolerance",
   "main": "dist/fuzzyequals.js",
+  "types": "dist/fuzzyequals.d.ts",
   "scripts": {
     "coverage": "nyc npm run test",
     "test": "mocha -r @babel/register -r jsdom-global/register --recursive",
@@ -73,6 +74,7 @@
     "openssl": "^1.1.0",
     "parsegraph-testsuite": "^1.4.1",
     "raw-loader": "^4.0.1",
+    "ts-loader": "^8.0.14",
     "ts-mocha": "^8.0.0",
     "webgl-mock": "^0.1.7"
   }
