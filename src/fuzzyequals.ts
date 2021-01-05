@@ -40,7 +40,7 @@ export function cloneFuzziness() {
   return new Fuzziness(defaultFuzziness.getFuzziness());
 }
 
-export default function fuzzyEquals(a:number, b:number, fuzziness:number) {
+export default function fuzzyEquals(a:number, b:number, fuzziness?:number) {
   let calc = defaultFuzziness;
   if (fuzziness !== undefined) {
     calc = new Fuzziness(fuzziness);
