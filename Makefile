@@ -40,6 +40,7 @@ doc: esdoc
 
 dist/$(DIST_NAME).js: $(SCRIPT_FILES)
 	npm run build
+	mv -v dist/src/* dist/
 
 clean:
 	rm -rf dist .nyc_output
