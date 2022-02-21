@@ -1,11 +1,11 @@
-import todo from ".";
+import { getFuzziness } from ".";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("demo");
   root.style.position = "relative";
 
   const container = document.createElement("div");
-  container.innerHTML = `${todo(2, 2.01)}`;
+  container.innerHTML = `${getFuzziness()}`;
   container.style.position = "absolute";
   container.style.left = "0px";
   container.style.top = "0px";
