@@ -1,6 +1,6 @@
 {
   "name": "parsegraph-fuzzyequals",
-  "version": "1.4.11",
+  "version": "1.4.12",
   "description": "Compares numbers within a set tolerance",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
